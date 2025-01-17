@@ -1,0 +1,22 @@
+{
+  "name": "vue2-year-picker",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "vue-cli-service build --target lib --name YearPicker ./src/YearPicker.vue"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.0"
+  },
+  "author": "traveltime1221",
+  "license": "MIT",
+  "description": "一個用於只有選擇年份的 Vue2 組件，支持西元轉民國年份轉換。",
+  "dependencies": {
+    "vue": "^2.6.0",
+    "vue-template-compiler": "^2.6.0"
+  }
+}
