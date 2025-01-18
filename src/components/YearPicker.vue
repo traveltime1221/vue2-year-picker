@@ -42,6 +42,7 @@
 
 <script>
 export default {
+  name: 'YearPicker',
   props: {
     year: Number,
     icon: Object

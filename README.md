@@ -4,6 +4,11 @@
 
 ![範例](./src/assets/image/example.gif)
 
+
+## 1.0.2
+更換打包方式嘗試
+
+
 ## 安裝
 
 ```

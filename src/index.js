@@ -1,2 +1,2 @@
-import YearPicker from './YearPicker.vue';
+import YearPicker from './components/YearPicker.vue'
 export default YearPicker;
