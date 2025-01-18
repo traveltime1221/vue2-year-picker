@@ -9,3 +9,5 @@
 ```
 npm install vue2-year-picker
 ```
+
+## 使用方式
