@@ -13,14 +13,14 @@
     <div v-if="showYearPicker" class="dropdown">
       <div class="range-header">
         <button class="btn bg-transparent" @click="prevRange" :disabled="currentRange.start < 1913">
-          <img width="20" :src="icon.left" alt="" />
+          <img width="20" :src="icon.prev" alt="" />
         </button>
         <span class="range-title">
           民國 {{ toTaiwanYear(currentRange.start) }} ~
           {{ toTaiwanYear(currentRange.end) }}
         </span>
         <button class="btn bg-transparent" @click="nextRange">
-          <img width="20" :src="icon.right" alt="" />
+          <img width="20" :src="icon.next" alt="" />
         </button>
       </div>
 
