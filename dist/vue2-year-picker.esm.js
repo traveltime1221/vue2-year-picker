@@ -1,4 +1,45 @@
-import { openBlock, createElementBlock, createCommentVNode, createElementVNode, withDirectives, vModelText, toDisplayString, Fragment, renderList, normalizeClass } from 'vue';
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var script = {
   name: 'YearPicker',
@@ -84,80 +125,230 @@ var script = {
   }
 };
 
-const _hoisted_1 = { class: "year-picker" };
-const _hoisted_2 = { class: "input-container" };
-const _hoisted_3 = {
-  key: 0,
-  class: "dropdown"
-};
-const _hoisted_4 = { class: "range-header" };
-const _hoisted_5 = ["disabled"];
-const _hoisted_6 = ["src"];
-const _hoisted_7 = { class: "range-title" };
-const _hoisted_8 = ["src"];
-const _hoisted_9 = { class: "year-grid" };
-const _hoisted_10 = ["onClick"];
-
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createElementBlock("div", _hoisted_1, [
-    createCommentVNode(" 輸入框，點擊展開或收起選單 "),
-    createElementVNode("div", _hoisted_2, [
-      withDirectives(createElementVNode("input", {
-        "onUpdate:modelValue": _cache[0] || (_cache[0] = $event => (($data.inputYear) = $event)),
-        type: "text",
-        placeholder: "輸入民國年份或點擊選擇",
-        onFocus: _cache[1] || (_cache[1] = $event => ($data.showYearPicker = true)),
-        onBlur: _cache[2] || (_cache[2] = (...args) => ($options.handleBlur && $options.handleBlur(...args)))
-      }, null, 544 /* NEED_HYDRATION, NEED_PATCH */), [
-        [vModelText, $data.inputYear]
-      ]),
-      createCommentVNode(" <button class=\"toggle-button\" @click=\"toggleYearPicker\">\n          {{ showYearPicker ? \"▲\" : \"▼\" }}\n        </button> ")
-    ]),
-    createCommentVNode(" 年份選單 "),
-    ($data.showYearPicker)
-      ? (openBlock(), createElementBlock("div", _hoisted_3, [
-          createElementVNode("div", _hoisted_4, [
-            createElementVNode("button", {
-              class: "btn bg-transparent",
-              onClick: _cache[3] || (_cache[3] = (...args) => ($options.prevRange && $options.prevRange(...args))),
-              disabled: $data.currentRange.start < 1913
-            }, [
-              createElementVNode("img", {
-                width: "20",
-                src: $props.icon.right,
-                alt: ""
-              }, null, 8 /* PROPS */, _hoisted_6)
-            ], 8 /* PROPS */, _hoisted_5),
-            createElementVNode("span", _hoisted_7, " 民國 " + toDisplayString($options.toTaiwanYear($data.currentRange.start)) + " ~ " + toDisplayString($options.toTaiwanYear($data.currentRange.end)), 1 /* TEXT */),
-            createElementVNode("button", {
-              class: "btn bg-transparent",
-              onClick: _cache[4] || (_cache[4] = (...args) => ($options.nextRange && $options.nextRange(...args)))
-            }, [
-              createElementVNode("img", {
-                width: "20",
-                src: $props.icon.left,
-                alt: ""
-              }, null, 8 /* PROPS */, _hoisted_8)
-            ])
-          ]),
-          createElementVNode("div", _hoisted_9, [
-            (openBlock(true), createElementBlock(Fragment, null, renderList($options.years, (year) => {
-              return (openBlock(), createElementBlock("button", {
-                key: year,
-                onClick: $event => ($options.selectYear(year)),
-                class: normalizeClass({ selected: year === $data.selectedYear })
-              }, toDisplayString($options.toTaiwanYear(year)), 11 /* TEXT, CLASS, PROPS */, _hoisted_10))
-            }), 128 /* KEYED_FRAGMENT */))
-          ])
-        ]))
-      : createCommentVNode("v-if", true),
-    createCommentVNode(" 顯示選擇結果 "),
-    createCommentVNode(" <p v-if=\"selectedYear\">\n        您選擇的年份是：西元 {{ selectedYear }} 年 (民國\n        {{ toTaiwanYear(selectedYear) }} 年)\n      </p> ")
-  ]))
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    // Vue.extend constructor export interop.
+    const options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+    }
+    // scopedId
+    {
+        options._scopeId = scopeId;
+    }
+    let hook;
+    {
+        hook = function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            const originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            const existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
 }
 
-script.render = render;
-script.__scopeId = "data-v-2a17b04a";
-script.__file = "src/components/YearPicker.vue";
+const isOldIE = typeof navigator !== 'undefined' &&
+    /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
+function createInjector(context) {
+    return (id, style) => addStyle(id, style);
+}
+let HEAD;
+const styles = {};
+function addStyle(id, css) {
+    const group = isOldIE ? css.media || 'default' : id;
+    const style = styles[group] || (styles[group] = { ids: new Set(), styles: [] });
+    if (!style.ids.has(id)) {
+        style.ids.add(id);
+        let code = css.source;
+        if (css.map) {
+            // https://developer.chrome.com/devtools/docs/javascript-debugging
+            // this makes source maps inside style tags work properly in Chrome
+            code += '\n/*# sourceURL=' + css.map.sources[0] + ' */';
+            // http://stackoverflow.com/a/26603875
+            code +=
+                '\n/*# sourceMappingURL=data:application/json;base64,' +
+                    btoa(unescape(encodeURIComponent(JSON.stringify(css.map)))) +
+                    ' */';
+        }
+        if (!style.element) {
+            style.element = document.createElement('style');
+            style.element.type = 'text/css';
+            if (css.media)
+                style.element.setAttribute('media', css.media);
+            if (HEAD === undefined) {
+                HEAD = document.head || document.getElementsByTagName('head')[0];
+            }
+            HEAD.appendChild(style.element);
+        }
+        if ('styleSheet' in style.element) {
+            style.styles.push(code);
+            style.element.styleSheet.cssText = style.styles
+                .filter(Boolean)
+                .join('\n');
+        }
+        else {
+            const index = style.ids.size - 1;
+            const textNode = document.createTextNode(code);
+            const nodes = style.element.childNodes;
+            if (nodes[index])
+                style.element.removeChild(nodes[index]);
+            if (nodes.length)
+                style.element.insertBefore(textNode, nodes[index]);
+            else
+                style.element.appendChild(textNode);
+        }
+    }
+}
 
-export { script as default };
+/* script */
+const __vue_script__ = script;
+
+/* template */
+var __vue_render__ = function () {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("div", { staticClass: "year-picker" }, [
+    _c("div", { staticClass: "input-container" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.inputYear,
+            expression: "inputYear",
+          },
+        ],
+        attrs: { type: "text", placeholder: "輸入民國年份或點擊選擇" },
+        domProps: { value: _vm.inputYear },
+        on: {
+          focus: function ($event) {
+            _vm.showYearPicker = true;
+          },
+          blur: _vm.handleBlur,
+          input: function ($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.inputYear = $event.target.value;
+          },
+        },
+      }),
+    ]),
+    _vm._v(" "),
+    _vm.showYearPicker
+      ? _c("div", { staticClass: "dropdown" }, [
+          _c("div", { staticClass: "range-header" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn bg-transparent",
+                attrs: { disabled: _vm.currentRange.start < 1913 },
+                on: { click: _vm.prevRange },
+              },
+              [
+                _c("img", {
+                  attrs: { width: "20", src: _vm.icon.right, alt: "" },
+                }),
+              ]
+            ),
+            _vm._v(" "),
+            _c("span", { staticClass: "range-title" }, [
+              _vm._v(
+                "\n        民國 " +
+                  _vm._s(_vm.toTaiwanYear(_vm.currentRange.start)) +
+                  " ~\n        " +
+                  _vm._s(_vm.toTaiwanYear(_vm.currentRange.end)) +
+                  "\n      "
+              ),
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn bg-transparent",
+                on: { click: _vm.nextRange },
+              },
+              [
+                _c("img", {
+                  attrs: { width: "20", src: _vm.icon.left, alt: "" },
+                }),
+              ]
+            ),
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "year-grid" },
+            _vm._l(_vm.years, function (year) {
+              return _c(
+                "button",
+                {
+                  key: year,
+                  class: { selected: year === _vm.selectedYear },
+                  on: {
+                    click: function ($event) {
+                      return _vm.selectYear(year)
+                    },
+                  },
+                },
+                [
+                  _vm._v(
+                    "\n        " + _vm._s(_vm.toTaiwanYear(year)) + "\n      "
+                  ),
+                ]
+              )
+            }),
+            0
+          ),
+        ])
+      : _vm._e(),
+  ])
+};
+var __vue_staticRenderFns__ = [];
+__vue_render__._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__ = function (inject) {
+    if (!inject) return
+    inject("data-v-5b727454_0", { source: "\n.year-picker[data-v-5b727454] {\n  font-family: Arial, sans-serif;\n  text-align: center;\n}\n.year-picker .input-container[data-v-5b727454] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  position: relative;\n}\n.year-picker input[data-v-5b727454] {\n  width: 100%;\n  padding: 8px;\n  font-size: 16px;\n  border: 0;\n  border: 1px solid #eee;\n}\n.year-picker .toggle-button[data-v-5b727454] {\n  padding: 8px 10px;\n  font-size: 16px;\n  border: 1px solid #ccc;\n  background-color: #f0f0f0;\n  border-radius: 4px;\n  cursor: pointer;\n}\n.year-picker .toggle-button[data-v-5b727454]:hover {\n  background-color: #e0e0e0;\n}\n.year-picker .dropdown[data-v-5b727454] {\n  position: absolute;\n  /* width: 100%; */\n  background-color: #fff;\n  border: 1px solid #eee;\n  border-radius: 0;\n  z-index: 10;\n}\n.year-picker .range-header[data-v-5b727454] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  font-size: 14px;\n  padding: 8px;\n  line-height: 20px;\n}\n.year-picker .range-header button[data-v-5b727454] {\n  background-color: transparent;\n  border: 0;\n  cursor: pointer;\n}\n.year-grid[data-v-5b727454] {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 10px;\n  padding: 0px 10px 10px 10px;\n}\n.year-grid button[data-v-5b727454] {\n  padding: 4px 10px;\n  font-size: 16px;\n  outline: 0;\n  border: 0;\n  background: transparent;\n  border-radius: 4px;\n  cursor: pointer;\n}\n.year-grid button[data-v-5b727454]:hover {\n  background-color: #007bff;\n  color: white;\n  opacity: 0.5;\n  transition: 0.3s;\n}\n.year-grid button.selected[data-v-5b727454] {\n  transition: 0.3s;\n  background-color: #007bff;\n  color: #fff;\n  border-color: #007bff;\n}\np[data-v-5b727454] {\n  margin-top: 20px;\n  font-size: 18px;\n  color: #333;\n}\n", map: {"version":3,"sources":["/Volumes/SP-PX10/projects/code/Tools/vue2/vue2-year-picker/src/components/YearPicker.vue"],"names":[],"mappings":";AAiIA;EACA,8BAAA;EACA,kBAAA;AACA;AAEA;EACA,aAAA;EACA,mBAAA;EACA,8BAAA;EACA,kBAAA;AACA;AAEA;EACA,WAAA;EACA,YAAA;EACA,eAAA;EACA,SAAA;EACA,sBAAA;AACA;AAEA;EACA,iBAAA;EACA,eAAA;EACA,sBAAA;EACA,yBAAA;EACA,kBAAA;EACA,eAAA;AACA;AAEA;EACA,yBAAA;AACA;AAEA;EACA,kBAAA;EACA,iBAAA;EACA,sBAAA;EACA,sBAAA;EACA,gBAAA;EACA,WAAA;AACA;AAEA;EACA,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,eAAA;EACA,YAAA;EACA,iBAAA;AACA;AAEA;EACA,6BAAA;EACA,SAAA;EACA,eAAA;AACA;AAEA;EACA,aAAA;EACA,qCAAA;EACA,SAAA;EACA,2BAAA;AACA;AAEA;EACA,iBAAA;EACA,eAAA;EACA,UAAA;EACA,SAAA;EACA,uBAAA;EACA,kBAAA;EACA,eAAA;AACA;AAEA;EACA,yBAAA;EACA,YAAA;EACA,YAAA;EACA,gBAAA;AACA;AAEA;EACA,gBAAA;EACA,yBAAA;EACA,WAAA;EACA,qBAAA;AACA;AAEA;EACA,gBAAA;EACA,eAAA;EACA,WAAA;AACA","file":"YearPicker.vue","sourcesContent":["<template>\n  <div class=\"year-picker\">\n    <!-- 輸入框，點擊展開或收起選單 -->\n    <div class=\"input-container\">\n      <input v-model=\"inputYear\" type=\"text\" placeholder=\"輸入民國年份或點擊選擇\" @focus=\"showYearPicker = true\"\n        @blur=\"handleBlur\" />\n      <!-- <button class=\"toggle-button\" @click=\"toggleYearPicker\">\n          {{ showYearPicker ? \"▲\" : \"▼\" }}\n        </button> -->\n    </div>\n\n    <!-- 年份選單 -->\n    <div v-if=\"showYearPicker\" class=\"dropdown\">\n      <div class=\"range-header\">\n        <button class=\"btn bg-transparent\" @click=\"prevRange\" :disabled=\"currentRange.start < 1913\">\n          <img width=\"20\" :src=\"icon.right\" alt=\"\" />\n        </button>\n        <span class=\"range-title\">\n          民國 {{ toTaiwanYear(currentRange.start) }} ~\n          {{ toTaiwanYear(currentRange.end) }}\n        </span>\n        <button class=\"btn bg-transparent\" @click=\"nextRange\">\n          <img width=\"20\" :src=\"icon.left\" alt=\"\" />\n        </button>\n      </div>\n\n      <div class=\"year-grid\">\n        <button v-for=\"year in years\" :key=\"year\" @click=\"selectYear(year)\"\n          :class=\"{ selected: year === selectedYear }\">\n          {{ toTaiwanYear(year) }}\n        </button>\n      </div>\n    </div>\n\n    <!-- 顯示選擇結果 -->\n    <!-- <p v-if=\"selectedYear\">\n        您選擇的年份是：西元 {{ selectedYear }} 年 (民國\n        {{ toTaiwanYear(selectedYear) }} 年)\n      </p> -->\n  </div>\n</template>\n\n<script>\nexport default {\n  name: 'YearPicker',\n  props: {\n    year: Number,\n    icon: Object\n  },\n  data() {\n    return {\n      isClickingButton: false, // 是否正在點擊按鈕\n      inputYear: '', // 輸入框內的年份\n      selectedYear: null, // 已選中的年份\n      showYearPicker: false, // 是否顯示年份選單\n      perYear: 12,\n      currentRange: {\n        start: 2020,\n        end: 2029\n      }\n    }\n  },\n  mounted() {\n    this.inputYear = this.year\n  },\n  computed: {\n    // 動態生成範圍內的年份\n    years() {\n      const { start } = this.currentRange\n      return Array.from({ length: this.perYear }, (_, i) => start + i)\n      // const { start, end } = this.currentRange\n      // return Array.from({ length: end - start + 1 }, (_, i) => start + i)\n    }\n  },\n  methods: {\n    // 西元轉民國\n    toTaiwanYear(year) {\n      this.$emit('update:year', year - 1911)\n      return year - 1911\n    },\n    // 民國轉西元\n    toWesternYear(taiwanYear) {\n      return taiwanYear + 1911\n    },\n    // 選擇年份\n    selectYear(year) {\n      this.selectedYear = year\n      this.inputYear = this.toTaiwanYear(year) // 更新輸入框為民國年\n      this.showYearPicker = false // 收起選單\n    },\n    prevRange() {\n      this.isClickingButton = true // 標記正在點擊按鈕\n      if (this.currentRange.start < 1911) return\n      this.currentRange.start -= this.perYear\n      this.currentRange.end -= this.perYear\n      setTimeout(() => (this.isClickingButton = false), 200) // 延遲重置\n    },\n    nextRange() {\n      this.isClickingButton = true // 標記正在點擊按鈕\n      this.currentRange.start += this.perYear\n      this.currentRange.end += this.perYear\n      setTimeout(() => (this.isClickingButton = false), 200) // 延遲重置\n    },\n    // 展開/收起選單\n    toggleYearPicker() {\n      this.showYearPicker = !this.showYearPicker\n    },\n    // 處理輸入框的失焦事件\n    handleBlur() {\n      setTimeout(() => {\n        // 如果不是點擊按鈕，才關閉選單\n        if (!this.isClickingButton) {\n          this.showYearPicker = false\n        }\n      }, 200)\n\n      const year = parseInt(this.inputYear)\n      // 檢查是否為有效的民國年份\n      if (!isNaN(year) && year >= 1 && year <= 300) {\n        this.selectedYear = this.toWesternYear(year)\n      } else {\n        this.inputYear = '' // 清空無效輸入\n      }\n    }\n  }\n}\n</script>\n\n<style scoped>\n.year-picker {\n  font-family: Arial, sans-serif;\n  text-align: center;\n}\n\n.year-picker .input-container {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  position: relative;\n}\n\n.year-picker input {\n  width: 100%;\n  padding: 8px;\n  font-size: 16px;\n  border: 0;\n  border: 1px solid #eee;\n}\n\n.year-picker .toggle-button {\n  padding: 8px 10px;\n  font-size: 16px;\n  border: 1px solid #ccc;\n  background-color: #f0f0f0;\n  border-radius: 4px;\n  cursor: pointer;\n}\n\n.year-picker .toggle-button:hover {\n  background-color: #e0e0e0;\n}\n\n.year-picker .dropdown {\n  position: absolute;\n  /* width: 100%; */\n  background-color: #fff;\n  border: 1px solid #eee;\n  border-radius: 0;\n  z-index: 10;\n}\n\n.year-picker .range-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  font-size: 14px;\n  padding: 8px;\n  line-height: 20px;\n}\n\n.year-picker .range-header button {\n  background-color: transparent;\n  border: 0;\n  cursor: pointer;\n}\n\n.year-grid {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 10px;\n  padding: 0px 10px 10px 10px;\n}\n\n.year-grid button {\n  padding: 4px 10px;\n  font-size: 16px;\n  outline: 0;\n  border: 0;\n  background: transparent;\n  border-radius: 4px;\n  cursor: pointer;\n}\n\n.year-grid button:hover {\n  background-color: #007bff;\n  color: white;\n  opacity: 0.5;\n  transition: 0.3s;\n}\n\n.year-grid button.selected {\n  transition: 0.3s;\n  background-color: #007bff;\n  color: #fff;\n  border-color: #007bff;\n}\n\np {\n  margin-top: 20px;\n  font-size: 18px;\n  color: #333;\n}\n</style>"]}, media: undefined });
+
+  };
+  /* scoped */
+  const __vue_scope_id__ = "data-v-5b727454";
+  /* module identifier */
+  const __vue_module_identifier__ = undefined;
+  /* functional template */
+  const __vue_is_functional_template__ = false;
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  const __vue_component__ = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    createInjector);
+
+export { __vue_component__ as default };
