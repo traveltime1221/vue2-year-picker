@@ -100,7 +100,9 @@ export default {
 | year    | Number     | 預設、傳遞選擇年份     | 
 | icon    | Object     | 傳遞圖片路徑, prev: 上一頁, next: 下一頁     | 
 
+
 ## 版本歷程
+* 1.1.9 package.json 補上環境依賴, 修正 git 連結, 文件修正
 * 1.1.8 文件補齊, 句子斷行修正
 * 1.1.7 文件補齊
 * 1.1.6 修正圖片參數異常
