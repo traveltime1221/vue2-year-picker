@@ -4,10 +4,24 @@
 
 ![範例](https://github.com/traveltime1221/vue2-year-picker/raw/main/src/assets/image/example.gif)
 
-## 安裝方式
+## 安裝
+
+### 環境
+"vue": ">=2.6.0 <2.7.0"
+"vue-template-compiler": ">=2.6.0 <2.7.0"
+"node": ">=12.0.0"
+
+### 安裝方式
 ```
 npm install vue2-year-picker
 ```
+
+### 解決安裝衝突
+如果專案包含 ESLint，安裝本套件時可能會遇到依賴衝突。可使用以下方法進行安裝處理：
+```
+npm install vue2-year-picker --legacy-peer-deps
+```
+
 
 ## 使用方式
 
@@ -81,11 +95,11 @@ export default {
 ## 屬性
 |  參數 | 類型 | 描述 | 
 | -------- | -------- | -------- | 
-| year    | Number     | 傳遞預設年份     | 
+| year    | Number     | 傳遞、預設年份     | 
 | icon    | Object     | 傳遞圖片路徑, prev: 上一頁, next: 下一頁     | 
 
-## 版本
-:::spoiler 版本歷程資訊
+## 版本歷程
+* 1.1.8 文件補齊
 * 1.1.7 文件補齊
 * 1.1.6 修正圖片參數異常
 * 1.1.5 打包異常修正, 參數傳遞異常修正
@@ -93,7 +107,6 @@ export default {
 * 1.0.3 更換打包方式
 * 1.0.2 發布版本調整
 * 1.0.0 第一次發布
-:::
 
 ## License
 MIT
